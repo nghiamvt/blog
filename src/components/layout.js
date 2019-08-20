@@ -23,9 +23,13 @@ class Layout extends React.Component {
         </Header>
         <main>{children}</main>
         <Footer>
-          <Link to="https://github.com/0xTatsu/blog" target="_blank">
+          <a
+            href="https://github.com/0xTatsu/blog"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Github />
-          </Link>
+          </a>
         </Footer>
       </div>
     )

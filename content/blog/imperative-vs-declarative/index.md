@@ -2,6 +2,7 @@
 title: Imperative vs Declarative
 date: "2019-07-23T08:57:31.348Z"
 description: "Imperative programming is like how you do something, and declarative programming is more like what you do or something."
+tags: ["programming"]
 ---
 
 > Imperative programming is like how you do something, and declarative programming is more like what you do or something.
