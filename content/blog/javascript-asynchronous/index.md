@@ -20,7 +20,7 @@ The answer is that JavaScript runs within a browser and browsers do a lot more t
 
 This visual from [Philip Roberts’s fantastic talk on the Event Loop](https://youtu.be/8aGhZQkoFbQ) illustrates the point nicely:
 
-![Browsers under the hood](browsers.jpg)
+![Browsers under the hood](_browsers.jpg)
 
 **_JavaScript runtime  engine_** is what executes our code and each major browser has a slightly different engine under the hood.
 
@@ -30,7 +30,7 @@ This visual from [Philip Roberts’s fantastic talk on the Event Loop](https://y
 
 If you simply type `window` in your console you can scroll through the long, long list of APIs included by default.
 
-![Web API](window.jpg)
+![Web API](_window.jpg)
 
 
 _These APIs are run independently, in a separate process, by the browser. **This is how asynchronous JavaScript happens!!!** It’s not that JavaScript itself is doing multiple things at once; instead *the browser can run multiple different processes* for us._
