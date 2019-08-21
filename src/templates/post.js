@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
+import TagList from "../components/tag-list"
 import SEO from "../components/seo"
 
 export default function BlogTemplate(props) {
@@ -21,6 +22,7 @@ export default function BlogTemplate(props) {
         <section
           dangerouslySetInnerHTML={{ __html: props.data.markdownRemark.html }}
         />
+        <TagList tags={post.tags.map(tag => ({ label: tag }))} />
         <hr />
       </article>
 
@@ -71,6 +73,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
     }
   }
