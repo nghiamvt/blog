@@ -50,7 +50,7 @@ _**We can divide kubernetes into 2 parts**_
 
 ### **_Containers_**
 
-*Programs running on Kubernetes are packaged as Linux containers such as Docker.*
+*Programs running on Kubernetes are packaged as Linux containers (Docker).*
 ![Kubernetes containers](_containers.png)
 
 - Multiple programs can be added into a single container

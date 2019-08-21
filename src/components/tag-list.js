@@ -30,20 +30,22 @@ const List = styled.ul`
   }
 
   li a {
-    display: inline-block;
-    padding: 0 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 1.5rem 0.2rem;
     margin: 0.5rem 0.5rem 0.5rem 0;
     color: #222;
     font-size: 12px;
     height: 35px;
-    line-height: 2.1875rem;
+    line-height: 35px;
     border: 1px solid #e6e6e6;
-    border-radius: 1rem;
+    border-radius: 2rem;
     text-decoration: none;
     box-shadow: none;
 
     &:hover {
       color: #007acc;
+      border-color: #007acc;
     }
   }
 `

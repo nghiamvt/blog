@@ -16,8 +16,8 @@ export default function BlogTemplate(props) {
       <SEO title={post.title} description={post.description || post.excerpt} />
       <article>
         <header>
-          <h1>{post.title}</h1>
-          <p>{post.date}</p>
+          <h1 style={{ marginBottom: `0` }}>{post.title}</h1>
+          <p style={{ fontSize: `14px` }}>{post.date}</p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: props.data.markdownRemark.html }}

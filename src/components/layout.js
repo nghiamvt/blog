@@ -40,7 +40,7 @@ export default Layout
 
 const Header = styled.header`
   width: 100px;
-  margin-bottom: 50px;
+  margin-bottom: 42px;
   a {
     color: transparent;
   }
