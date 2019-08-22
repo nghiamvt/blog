@@ -42,7 +42,7 @@ export default function Bio() {
       <p>
         Most of us don't listen with the intent to <b>understand</b>. <br />
         <span>
-          We listen with the intent to <b>reply</b>. It hurts!
+          We listen with the intent to <b>reply</b>
         </span>
       </p>
     </Wrapper>

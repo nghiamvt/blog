@@ -42,6 +42,7 @@ const List = styled.ul`
     border-radius: 2rem;
     text-decoration: none;
     box-shadow: none;
+    transition: color 1s, border-color 1.5s;
 
     &:hover {
       color: #007acc;

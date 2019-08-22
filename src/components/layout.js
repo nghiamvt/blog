@@ -5,52 +5,52 @@ import { rhythm } from "../utils/typography"
 import Logo from "../images/logo.svg"
 import Github from "../images/github.svg"
 
-class Layout extends React.Component {
-  render() {
-    const { children } = this.props
-    return (
-      <div
-        style={{
-          margin: "auto",
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        <Header>
-          <Link to="/">
-            <Logo />
-          </Link>
-        </Header>
-        <main>{children}</main>
-        <Footer>
-          <a
-            href="https://github.com/0xTatsu/blog"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Github />
-          </a>
-        </Footer>
-      </div>
-    )
-  }
+export default function Layout(props) {
+  return (
+    <Wrapper>
+      <header>
+        <Link to="/">
+          <Logo />
+        </Link>
+      </header>
+      <main>{props.children}</main>
+      <footer>
+        <a
+          href="https://github.com/0xTatsu"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Github />
+        </a>
+      </footer>
+    </Wrapper>
+  )
 }
 
-export default Layout
-
-const Header = styled.header`
-  width: 100px;
-  margin-bottom: 42px;
-  a {
-    color: transparent;
-  }
-`
-
-const Footer = styled.footer`
+const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
-  a {
-    width: 40px;
-    color: transparent;
+  flex-direction: column;
+  margin: auto;
+  max-width: ${rhythm(24)};
+  padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
+  header {
+    margin-bottom: 48px;
+    a {
+      color: transparent;
+      display: inline-block;
+    }
+    svg {
+      width: 100px;
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+    a {
+      width: 40px;
+      color: transparent;
+    }
   }
 `

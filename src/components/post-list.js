@@ -8,7 +8,7 @@ export default function PostList(props) {
     const title = node.frontmatter.title || node.fields.slug
     return (
       <article key={node.fields.slug}>
-        <header>
+        <div>
           <h3
             style={{
               marginBottom: rhythm(1 / 4),
@@ -19,7 +19,7 @@ export default function PostList(props) {
             </Link>
           </h3>
           <small>{node.frontmatter.date}</small>
-        </header>
+        </div>
         <section>
           <p
             dangerouslySetInnerHTML={{
