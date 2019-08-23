@@ -1,15 +1,15 @@
 ---
 template: "post"
-title: HTMLCollection, Nodelist and Array
+title: HTMLCollection and Nodelist
 date: "2019-08-23T10:14:14.068"
-description: "Most of us believed, at least for some time, that in our DOM Scripting, we always dealt with arrays in our JavaScript, but they are actually not native Javascript array..."
-tags: ["javascript", "dom", "HTMLCollection", "Nodelist"]
+description: "Most of us believed, at least for some time, that in our DOM Scripting, we always dealt with arrays in our JavaScript, but they are actually not..."
+tags: ["javascript", "DOM", "HTMLCollection", "Nodelist"]
 ---
 
 Assuming we have a DOM like this
 
 ```html
-<div id="”container”>
+<div id="container">
  <div class="child">...</div>
  <div class="child">...</div>
  <div class="child">...</div>
@@ -28,26 +28,26 @@ $('#container').children()
 Using **[querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)**
 ```Javascript
 const childList = document.querySelectorAll('.child')
-Array.isArray(childList) //=> false
 childList.constructor.name //=> NodeList ???
+Array.isArray(childList) //=> false
 ```
 
 
 Or **[getElementsByClassName](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByClassName)** 
 ```Javascript
 const childList = document.getElementsByClassName('child')
-Array.isArray(childList) //=> false
 childList.constructor.name //=> HTMLCollection ???
+Array.isArray(childList) //=> false
 ```
 
 
-**_What are NodeList and HTMLCollection objects and why are we not the plain vanilla javascript array?_**
+**_What are NodeList and HTMLCollection?_**
 
 ### **HTMLCollection**
-*An HTMLCollection is a list of nodes. Collections in the HTML DOM are assumed to be `live` meaning that they are automatically updated when the underlying document is changed.*
+*An HTMLCollection object is an array-like list of HTML elements. An HTMLCollection in the HTML DOM is `live`; it is automatically updated when the underlying document is changed.*
 
 ### **Nodelist**
-*A NodeList object is a collection of nodes. NodeList objects in the DOM are `live or static` based on the interface used to retrieve them*
+*A NodeList object is a list (collection) of nodes extracted from a document. NodeList objects in the DOM are `live or static` based on the interface used to retrieve them*
 
 **_What are live and static?_**
 ```Javascript
@@ -75,13 +75,13 @@ For example, `document.getElementByName` will return a live NodeList.
 - HTMLCollection: `getElementsByTagName`, `getElementsByClassName`
 - NodeList: `getElementsByName`, `querySelectorAll`
 
-**Neither HTMLCollectionn nor NodeList is native Javascript array**, so that they aren't support array prototype methods like push, pop or splice.
+**Neither HTMLCollectionn nor NodeList is a native Javascript array**. Event though they look like an array, they are not. They, therefore, aren't support array prototype methods like push, pop or splice.
 
-### **_Convert to a Javascript Array_**
-We can use either `Array.from` or `Spread operator`
+### **_How can we interact with them?_**
+We can convert them into an array by using `Array.from` or `spread operator`
 ```Javascript
 Array.from(Nodelist) // Array.from(HTMLCollection)
 […document.querySelectorAll('.child')]
 ```
 
-There are more interesting and useful stuff to do with this topic. Stay tune.
+There are more interesting and useful stuff to do with this topic. Stay tune 🤙.

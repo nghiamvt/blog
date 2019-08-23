@@ -32,7 +32,7 @@ const List = styled.ul`
   li a {
     display: inline-flex;
     align-items: center;
-    padding: 0 1.5rem 0.2rem;
+    padding: 0 0.8rem;
     margin: 0.5rem 0.5rem 0.5rem 0;
     color: #222;
     font-size: 12px;

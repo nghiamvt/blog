@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(246, 247, 248);
+}
+
 blockquote {
   display: block;
   border-left: unset;
@@ -22,4 +26,11 @@ blockquote:before {
   font: 6em/1.08em "PT Sans", sans-serif;
   color: #666;
   text-align: center;
+}
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+  box-shadow: none;
 }

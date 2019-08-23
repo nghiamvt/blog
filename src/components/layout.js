@@ -1,18 +1,13 @@
 import React from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
 import { rhythm } from "../utils/typography"
-import Logo from "../images/logo.svg"
+import Header from "./header"
 import Github from "../images/github.svg"
 
 export default function Layout(props) {
   return (
     <Wrapper>
-      <header>
-        <Link to="/">
-          <Logo />
-        </Link>
-      </header>
+      <Header />
       <main>{props.children}</main>
       <footer>
         <a
@@ -32,17 +27,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   margin: auto;
   max-width: ${rhythm(24)};
-  padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
-  header {
-    margin-bottom: 48px;
-    a {
-      color: transparent;
-      display: inline-block;
-    }
-    svg {
-      width: 100px;
-    }
-  }
+  padding: 6rem ${rhythm(3 / 4)} ${rhythm(1.5)};
 
   footer {
     display: flex;
