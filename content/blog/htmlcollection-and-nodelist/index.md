@@ -3,7 +3,7 @@ template: "post"
 title: HTMLCollection and Nodelist
 date: "2019-08-23T10:14:14.068"
 description: "Most of us believed, at least for some time, that in our DOM Scripting, we always dealt with arrays in our JavaScript, but they are actually not..."
-tags: ["javascript", "DOM", "HTMLCollection", "Nodelist"]
+tags: ["Javascript", "DOM", "HTMLCollection", "Nodelist"]
 ---
 
 Assuming we have a DOM like this

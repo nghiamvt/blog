@@ -3,7 +3,7 @@ template: "post"
 title: Javascript Asynchronous
 date: "2019-08-18T04:17:37.763Z"
 description: "JavaScript is a single-threaded language which means it can only handle one task or piece of code at a time, but how is it asynchronous?"
-tags: ["asynchronous", "javascript"]
+tags: ["Asynchronous", "Javascript"]
 ---
 
 

@@ -23,8 +23,8 @@ export default function Header() {
         </Link>
         <HamburgerIcon onClick={() => setMenuOpen(!isMenuOpen)} />
         <div className="menu">
-          <Link to="/blog">Blog</Link>
-          <Link to="/about">About</Link>
+          <Link to="/portfolio">Portfolio</Link>
+          <Link to="/contact">Contact</Link>
         </div>
       </div>
     </StyledHeader>
