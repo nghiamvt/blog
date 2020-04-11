@@ -7,32 +7,50 @@ tags: ["Asynchronous", "Javascript"]
 ---
 
 
-Javascript is a single-threaded language. this means it has one *call stack* and one *memory heap*. As expected, it executes code in order and must finish executing a piece code before moving onto the next. It's synchronous, but that would make it very harmful. For example, if a function takes awhile to execute or has to wait on something, it freezes everything up in the meanwhile.
+Javascript is a single-threaded programming language, meaning that JavaScript can only run one instruction at a time. 
 
-## _*So, How do you get asynchronous code with Javascript then?*_
-
-The answer is that JavaScript runs within a browser and browsers do a lot more than just execute code. In fact, `there are four distinct parts of the browser` to consider:
-
-1. **JavaScript runtime engine**
-2. **Web APIs** provided by the browser like the `DOM`, `setTimeout`, etc.
-3. **a callback queue** for events with callbacks like onClick and onLoad
-4. **an event loop**
-
-This visual from [Philip Roberts’s fantastic talk on the Event Loop](https://youtu.be/8aGhZQkoFbQ) illustrates the point nicely:
-
-![Browsers under the hood](_browsers.jpg)
-
-**_JavaScript runtime  engine_** is what executes our code and each major browser has a slightly different engine under the hood.
-
-**_Web APIs_** are provided to us by the browser and include methods like `setTimeout()`, `setInterval()`.... 
-
-*The *call stack* recognizes functions of the Web API and hands them off to be handled by the browser. Once those tasks are finished by the browser, they return and are pushed onto the stack as a callback.*
-
-If you simply type `window` in your console you can scroll through the long, long list of APIs included by default.
-
-![Web API](_window.jpg)
+It's synchronous, but that would make it very harmful. A good example is `alert("Hello World")`. You can't intereact with the webpage at all until you hit OK and dismiss the alert because it freezes everything up in the meanwhile.
 
 
-_These APIs are run independently, in a separate process, by the browser. **This is how asynchronous JavaScript happens!!!** It’s not that JavaScript itself is doing multiple things at once; instead *the browser can run multiple different processes* for us._
+## _*So, If JavaScript is single Threaded, How is it Asynchronous?*_
 
-[Here](http://latentflip.com/loupe/) is a really good site that slows the process of asynchronous and show what happen. 
+Short Answer: _These asynchronous tasks are run independently, in a separate process, by the browser. **This is how asynchronous JavaScript happens!!!** It’s not that JavaScript itself is doing multiple things at once; instead *the browser can run multiple different processes* for us._
+
+To answer this question in more detail, we have to understand a bigger picture.
+
+When you visit a website you do so within a web browser (Chrome, Firefox, Edge, or Safari). Each browser has **a JS Runtime Environment**. 
+
+![JS Runtime Environment](_js_runtime_env.png)
+
+Think of the JS runtime environment as a big container. Within the big container are other smaller containers. 
+
+### 1. **JS ENGINE** 
+This is where JS Code is executed. (JS Engine in Chrome is V8, Firefox is spidermonkey, IE is chakra, Safari is nitro).The process of parsing here does one thing at a time on a single thread. (This is what they mean when saying JS run synchronously). The Stack is last in first out (LIFO), (Ex: putting func first, then their childs).
+  
+### 2. **Web APIs** 
+WebAPIs provided by the browser and made available in the browser’s JS Runtime Environment.
+
+*When _asynchronous_ tasks come (HTTP/AJAX requests or timing). They will go into call stack in JS Engine as normal functions but calling to WebAPIs as this task resided in WebAPIS. It stores these *callback functions` and does the task for us (using threading/multi processing depending on the runtime). Once it is finished, it sends the callback to callback queue.*
+
+List of WebAPIs
+![WebAPIs](_window.jpg)
+
+### 3. **The Callback Queue** 
+The Callback queue will receive callbacks from WebAPIs and store them in the FIFO data structure. 
+
+### 4. **The Event Loop** 
+The Event Loop constantly looks at the Stack and the Queue. If it sees the Stack is empty, it will notify the Queue to send over its next callback function.
+
+*This is what they mean when they say Javascript can run asynchronously. It isn’t actually true, it just seems true. Javascript can only ever execute one function at a time, whatever is at top of the stack, it is a synchronous language. But because the Web API container can forever add callbacks to the queue (onClick event), and the queue can forever add those callbacks to the stack, we think of javascript as being asynchronous. This is really the great power of the language. Its ability to be synchronous, yet run in an asynchronous manner, like magic!*
+
+
+## How is it non-blocking?
+Say, when you make a call to an API and it fails or some other event is stuck, it’s still in the WebAPIs so it never goes to callback queue and hence call stack. So nothing is blocked.
+
+
+Note: You can always run a multithreaded programming language in single thread, but you cant do the opposite.
+
+Ref: 
+- This visual from [Philip Roberts’s fantastic talk on the Event Loop](http://latentflip.com/loupe/) will illustrate the point nicely.
+- [Javascript — single threaded, non-blocking, asynchronous, concurrent language](https://medium.com/@theflyingmantis/javascript-single-threaded-non-blocking-asynchronous-concurrent-language-ffae97c57bef)
+- [The Javascript Runtime Environment](https://medium.com/@olinations/the-javascript-runtime-environment-d58fa2e60dd0)
