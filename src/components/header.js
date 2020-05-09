@@ -8,13 +8,10 @@ export default function Header() {
   const [isTop, setIsTop] = React.useState(true)
   const [isMenuOpen, setMenuOpen] = React.useState(false)
 
-  useScrollPosition(
-    ({ currPos }) => {
-      const isShow = currPos.y === 0
-      if (isShow !== isTop) setIsTop(isShow)
-    },
-    [isTop]
-  )
+  useScrollPosition(({ prevPos, currPos }) => {
+    if (currPos.y === 0) setIsTop(true)
+    if (prevPos.y === 0 && currPos !== 0) setIsTop(false)
+  }, 0)
   return (
     <StyledHeader hideBackground={!isMenuOpen && isTop}>
       <div>
