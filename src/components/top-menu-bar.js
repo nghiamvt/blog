@@ -1,10 +1,12 @@
 import { Link } from "gatsby"
 import React from "react"
 import styled, { css } from "styled-components"
+
+import { rhythm } from "../utils/typography"
 import Logo from "../images/logo.svg"
 import { useScrollPosition } from "../hooks/use-scroll-position"
 
-export default function Header() {
+export default function TopBarMenu() {
   const [isTop, setIsTop] = React.useState(true)
   const [isMenuOpen, setMenuOpen] = React.useState(false)
 
@@ -13,18 +15,18 @@ export default function Header() {
     if (prevPos.y === 0 && currPos !== 0) setIsTop(false)
   }, 0)
   return (
-    <StyledHeader hideBackground={!isMenuOpen && isTop}>
+    <StyledTopBarMenu hideBackground={!isMenuOpen && isTop}>
       <div>
         <Link to="/">
           <Logo style={{ width: `100px` }} />
         </Link>
         <HamburgerIcon onClick={() => setMenuOpen(!isMenuOpen)} />
-        <div className="menu">
+        {/* <div className="menu">
           <Link to="/portfolio">Portfolio</Link>
           <Link to="/contact">Contact</Link>
-        </div>
+        </div> */}
       </div>
-    </StyledHeader>
+    </StyledTopBarMenu>
   )
 }
 
@@ -39,7 +41,7 @@ function HamburgerIcon(props) {
   )
 }
 
-const StyledHeader = styled.header`
+const StyledTopBarMenu = styled.div`
   z-index: 1;
   position: fixed;
   top: 0;
@@ -55,7 +57,7 @@ const StyledHeader = styled.header`
           background: rgb(255, 255, 255) !important;
           box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 4px 0px !important;
         `
-  }}
+  }};
 
   transition: background 250ms ease-in-out 0s, box-shadow 250ms ease-in-out 0s;
 
@@ -64,7 +66,7 @@ const StyledHeader = styled.header`
     align-items: center;
     justify-content: space-between;
     padding: 16px 1.3125rem;
-    max-width: 800px;
+    max-width: ${rhythm(32)};
     margin: 0 auto;
   }
 

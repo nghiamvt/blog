@@ -1,13 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 import { rhythm } from "../utils/typography"
-import Header from "./header"
+import TopBarMenu from "./top-menu-bar"
 import Github from "../images/github.svg"
 
 export default function Layout(props) {
   return (
     <Wrapper>
-      <Header />
+      <TopBarMenu />
       <main>{props.children}</main>
       <footer>
         <a
@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
-  max-width: ${rhythm(24)};
+  max-width: ${rhythm(32)};
   padding: 6rem ${rhythm(3 / 4)} ${rhythm(1.5)};
 
   footer {
