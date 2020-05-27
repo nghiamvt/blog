@@ -38,10 +38,10 @@ pre {
 
   border-radius: 5px;
   /* background: rgba(29, 59, 83, 0.99); */
-  background: #011b2f;
+  background-color: #011b2f;
 }
 
-@media (max-width: 690px) {
+@media (max-width: 56rem) {
   pre {
     border-radius: 0;
   }

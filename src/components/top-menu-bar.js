@@ -1,10 +1,9 @@
 import { Link } from "gatsby"
 import React from "react"
 import styled, { css } from "styled-components"
-
-import { rhythm } from "../utils/typography"
-import Logo from "../images/logo.svg"
 import { useScrollPosition } from "../hooks/use-scroll-position"
+import Logo from "../images/logo.svg"
+import { rhythm } from "../utils/typography"
 
 export default function TopBarMenu() {
   const [isTop, setIsTop] = React.useState(true)
@@ -51,15 +50,16 @@ const StyledTopBarMenu = styled.div`
   ${({ hideBackground }) => {
     return hideBackground
       ? css`
-          background: transparent;
+          background-color: transparent;
         `
       : css`
-          background: rgb(255, 255, 255) !important;
+          background-color: rgb(255, 255, 255) !important;
           box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 4px 0px !important;
         `
   }};
 
-  transition: background 250ms ease-in-out 0s, box-shadow 250ms ease-in-out 0s;
+  transition: background-color 250ms ease-in-out 0s,
+    box-shadow 250ms ease-in-out 0s;
 
   > div {
     display: flex;
