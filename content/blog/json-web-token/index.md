@@ -60,10 +60,14 @@ Because the `secret-key` is only known to the server, only it can issue new toke
 
 Since a JWT can be set to expire (be invalidated) after a particular period of time, two tokens will be considered in this application:
 
-**Access Token** carry the necessary information to access a resource directly. In other words, when a client passes an access token to a server managing a resource, that server can use the information contained in the token to decide whether the client is authorized or not. Access tokens usually have an expiration date and are short-lived.
+#### Access Token
+
+Access token carries the necessary information to access a resource directly. In other words, when a client passes an access token to a server managing a resource, that server can use the information contained in the token to decide whether the client is authorized or not. Access tokens usually have an expiration date and are short-lived.
 ![access token](_access_token.png)
 
-**Refresh Token**: A refresh token has a longer lifespan, ad is used to generate new access and refresh tokens.
+#### Refresh Token
+
+A refresh token has a longer lifespan, ad is used to generate new access and refresh tokens.
 
 When you initially received the access token, it may have included a refresh token as well as an expiration time like in the example below.
 
@@ -76,7 +80,7 @@ When you initially received the access token, it may have included a refresh tok
 }
 ```
 
-The presence of the refresh token means that the access token will expire and you’ll be able to get a new one without the user’s interaction.
+**How refresh token works**
 
 - If you make an API request and the token has expired already, you’ll get back a response indicating as such.
 - You can check for this specific error message, and then make a request using the refresh token it previously received.
@@ -84,9 +88,14 @@ The presence of the refresh token means that the access token will expire and yo
 
 ![refresh token](_refresh_token.png)
 
-If you do not get back a new refresh token, then it means your existing refresh token will continue to work when the new access token expires.
+**The benefits of refresh token**:
 
-Your application also needs to be able to handle the case when refreshing the access token also fails. At that point, you will need to prompt the user for authorization again.
+- Allow users not to enter their credentials again and again when access token expires
+- Reduce risks as access token can last a short period of time
+
+**What happens if refresh token get compromized**
+
+In this case, servers can easily detect anomalies. For example, if the IP of a user when login is different to the IP when it uses refresh token to get new access token. We will terminate the refresh token process, invalidate the refresh token and prompt the user to enter username/password again.
 
 ### Where to store a JWT?
 
